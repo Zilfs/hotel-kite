@@ -1,15 +1,10 @@
 <?php
 session_start();
-if (!isset($_SESSION["manager"])) {
-    header("location:dashboard.php");
-    exit;
-}
 
-if (!isset($_SESSION["login"])) {
+if (!isset($_SESSION{"login"})) {
     header("location:index.php");
     exit;
 }
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -64,43 +59,43 @@ if (!isset($_SESSION["login"])) {
             </div>
             <div class="col-xl-10 col-lg-9 col-md-12 d-flex flex-row justify-content-center">
                 <div class="dashboard-section w-100 mt-5 px-3">
-                <h1>Data User</h1>
+                <h1>Data Kamar</h1>
                 <div class="col">
-                    <a href="dashboard-add-user.php" class="btn btn-primary btn-sm d-flex justify-content-center mb-3 mt-5">Tambah User</a>
+                    <a href="dashboard-add-room.php" class="btn btn-primary btn-sm d-flex justify-content-center mb-3 mt-5">Tambah Kamar</a>
                 </div>
                 <table class="table table-striped table-hover table-sm overflow-x-scroll">
                     <tr>
                         <th>No</th>
-                        <th>ID User</th>
-                        <th>Username</th>
-                        <th>Password</th>
-                        <th>Level</th>
+                        <th>ID Kamar</th>
+                        <th>Nomor Kamar</th>
+                        <th>Kelas</th>
+                        <th>Status</th>
                         <th>Action</th>
                     </tr>
                     <?php
 include 'koneksi.php';
 $no = 1;
-$hasil = $conn->query("SELECT * FROM users");
+$hasil = $conn->query("SELECT * FROM rooms");
 ?>
                     <?php
 while ($row = $hasil->fetch_assoc()) {
     ?>
                         <tr>
                             <td><?=$no++;?></td>
-                            <td><?=$row['id_user'];?></td>
-                            <td><?=$row['username'];?></td>
-                            <td><?=$row['password'];?></td>
-                            <td><?=$row['levels'];?></td>
+                            <td><?=$row['id'];?></td>
+                            <td><?=$row['no_kamar'];?></td>
+                            <td><?=$row['kelas'];?></td>
+                            <td><?=$row['status'];?></td>
                             <td>
-                                <a href="dashboard-edit-user.php?edit=<?=$row['id_user'];?>" class="btn btn-warning btn-sm">Edit</a>
-                                <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#hapusModal<?=$row['id_user'];?>">
+                                <a href="dashboard-edit-room.php?edit=<?=$row['id'];?>" class="btn btn-warning btn-sm">Edit</a>
+                                <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#hapusModal<?=$row['id'];?>">
                                     Hapus
                                 </button>
                             </td>
                         </tr>
 
                         <!-- Modal Hapus -->
-                        <div class="modal fade" id="hapusModal<?=$row['id_user'];?>" tabindex="-1" aria-labelledby="hapusModalLabel" aria-hidden="true">
+                        <div class="modal fade" id="hapusModal<?=$row['id'];?>" tabindex="-1" aria-labelledby="hapusModalLabel" aria-hidden="true">
                             <div class="modal-dialog">
                                 <div class="modal-content">
                                     <div class="modal-header">
@@ -112,7 +107,7 @@ while ($row = $hasil->fetch_assoc()) {
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-                                        <a href="crud-users.php?id_user=<?=$row['id_user'];?>" class="btn btn-danger">Hapus</a>
+                                        <a href="crud-rooms.php?id=<?=$row['id'];?>" class="btn btn-danger">Hapus</a>
                                     </div>
                                 </div>
                             </div>

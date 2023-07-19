@@ -1,4 +1,10 @@
 <?php
+session_start();
+
+if (isset($_SESSION["login"])) {
+    header("Location: dashboard.php");
+    exit;
+}
 
 include 'koneksi.php';
 include 'crud-users.php';
@@ -14,15 +20,27 @@ if (isset($_POST["login"])) {
         $row = mysqli_fetch_assoc($result);
 
         if ($password == $row["password"]) {
-            header("location:dashboard.php");
-            exit;
+
+            if ($row["levels"] == "manager") {
+                $_SESSION["manager"] = true;
+                $_SESSION["login"] = true;
+
+                header("location:dashboard.php");
+                exit;
+            } else if ($row["levels"] == "staff") {
+                $_SESSION["manager"] = false;
+                $_SESSION["login"] = true;
+
+                header("location:dashboard.php");
+                exit;
+            }
+
         }
     }
 
     echo "<script>alert('login gagal, username atau password salah')</script>";
 
 }
-
 ?>
 
 <!DOCTYPE html>

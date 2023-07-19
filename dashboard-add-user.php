@@ -1,3 +1,11 @@
+<?php
+session_start();
+
+if (!isset($_SESSION{"login"})) {
+    header("location:index.php");
+    exit;
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -28,7 +36,7 @@
                     <div class="sidebar-list d-flex flex-column mt-3 w-100">
                         <a href="dashboard-user.php" class="user-btn sidebar-item pt-3 pb-3 w-100 text-center mb-2" data-aos="fade-right">User</a>
                         <a href="" class="room-btn sidebar-item pt-3 pb-3 w-100 text-center mb-2" data-aos="fade-right" data-aos-delay="100">Room</a>
-                        <a href="index.php" class="logout-btn sidebar-item pt-3 pb-3 w-100 text-center mb-2"data-aos="fade-right" data-aos-delay="200">Log Out</a>
+                        <a href="logout.php" class="logout-btn sidebar-item pt-3 pb-3 w-100 text-center mb-2"data-aos="fade-right" data-aos-delay="200">Log Out</a>
                     </div>
                 </div>
             </div>

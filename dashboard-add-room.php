@@ -6,7 +6,6 @@ if (!isset($_SESSION{"login"})) {
     exit;
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,7 +21,7 @@ if (!isset($_SESSION{"login"})) {
     <div class="container-fluid">
     <div class="d-flex flex-row mobile-menu d-lg-none">
             <button class="btn btn-secondary mx-3 mt-5" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions">🖥️</button>
-            <!-- Mobile Menu -->
+
             <div class="offcanvas offcanvas-start bg-dark" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions" aria-labelledby="offcanvasWithBothOptionsLabel">
                 <div class="offcanvas-header">
                     <div class="icon-area mb-5">
@@ -37,13 +36,13 @@ if (!isset($_SESSION{"login"})) {
                     <div class="sidebar-list d-flex flex-column mt-3 w-100">
                         <a href="dashboard-user.php" class="user-btn sidebar-item pt-3 pb-3 w-100 text-center mb-2" data-aos="fade-right">User</a>
                         <a href="" class="room-btn sidebar-item pt-3 pb-3 w-100 text-center mb-2" data-aos="fade-right" data-aos-delay="100">Room</a>
-                        <a href="index.php" class="logout-btn sidebar-item pt-3 pb-3 w-100 text-center mb-2"data-aos="fade-right" data-aos-delay="200">Log Out</a>
+                        <a href="logout.php" class="logout-btn sidebar-item pt-3 pb-3 w-100 text-center mb-2"data-aos="fade-right" data-aos-delay="200">Log Out</a>
                     </div>
                 </div>
             </div>
         </div>
         <div class="row">
-          <!-- Sidebar Menu -->
+            <!-- Sidebar Menu -->
             <div class="sidebar d-flex flex-column align-items-center justify-content-center col-xl-2 col-lg-3 bg-dark min-vh-100 d-none d-lg-block">
                 <div class="icon-area mb-5">
                     <a href="dashboard.php" class="d-flex flex-row align-items-center mt-5" style="text-decoration:none;" data-aos="fade-down">
@@ -54,58 +53,57 @@ if (!isset($_SESSION{"login"})) {
                 <div class="sidebar-list d-flex flex-column mt-3 w-100">
                     <a href="dashboard-user.php" class="user-btn sidebar-item pt-3 pb-3 w-100 text-center mb-2" data-aos="fade-right">User</a>
                     <a href="" class="room-btn sidebar-item pt-3 pb-3 w-100 text-center mb-2" data-aos="fade-right" data-aos-delay="100">Room</a>
-                    <a href="logout.php" class="logout-btn sidebar-item pt-3 pb-3 w-100 text-center mb-2"data-aos="fade-right" data-aos-delay="200">Log Out</a>
+                    <a href="index.php" class="logout-btn sidebar-item pt-3 pb-3 w-100 text-center mb-2"data-aos="fade-right" data-aos-delay="200">Log Out</a>
                 </div>
             </div>
             <div class="col-10 d-flex flex-row justify-content-center">
                 <div class="form-section w-75 mt-5">
-                <h1>Edit User</h1>
-                <?php
-include 'koneksi.php';
-include 'crud-users.php';
-$panggil = $conn->query("SELECT * FROM users where id_user='$_GET[edit]'");
-?>
-<?php
-while ($row = $panggil->fetch_assoc()) {
-    ?>
-                    <form action="crud-users.php" method="POST">
+                    <h1>Add New Room</h1>
+                    <form action="crud-rooms.php" method="POST">
                         <div class="form-group">
-                            <label for="id_user">ID User</label>
+                            <label for="no_kamar">No Kamar</label>
 
-                            <input type="text" class="form-control mb-3" name="id_user" value="<?=$row['id_user']?>" readonly>
+                            <input type="text" class="form-control mb-3" name="no_kamar">
 
                         </div>
                         <div class="form-group">
-                            <label for="username">Username</label>
-
-                            <input type="text" class="form-control mb-3" name="username" value="<?=$row['username']?>">
-
-                        </div>
-
-                        <div class="form-group">
-
-                            <label for="levels">Level</label>
+                            <label for="kelas">Kelas</label>
                             <div class="form-check">
 
-                                <input type="radio" class="form-check-input" name="levels" value="manager"
-                                <?php
-if (($row['levels']) === "manager") {echo "checked";}
-    ?>> Manager
+                                <input type="radio" class="form-check-input" name="kelas" value="premium"> Premium
+
                             </div>
 
                             <div class="form-check">
 
-                                <input type="radio" class="form-check-input" name="levels" value="staff"
-                                <?php
-if (($row['levels']) === "staff") {echo "checked";}
-    ?>> Staff
+                                <input type="radio" class="form-check-input" name="kelas" value="deluxe"> Deluxe
+
+                            </div>
+
+                            <div class="form-check">
+
+                                <input type="radio" class="form-check-input" name="kelas" value="standard"> Standard
+
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="status">Level</label>
+                            <div class="form-check">
+
+                                <input type="radio" class="form-check-input" name="status" value="not_ready"> Out Of Service
+
+                            </div>
+
+                            <div class="form-check">
+
+                                <input type="radio" class="form-check-input" name="status" value="ready"> Ready
+
                             </div>
                             <div class="form-group mt-3">
-                                <input type="submit" name="edit-user" value="Edit" class="form-control btn btn-primary">
+                                <input type="submit" name="add-room" value="Simpan" class="form-control btn btn-primary">
                             </div>
                         </div>
                     </form>
-                <?php }?>
                 </div>
             </div>
         </div>

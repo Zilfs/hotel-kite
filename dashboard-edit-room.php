@@ -62,46 +62,74 @@ if (!isset($_SESSION{"login"})) {
                 <h1>Edit User</h1>
                 <?php
 include 'koneksi.php';
-include 'crud-users.php';
-$panggil = $conn->query("SELECT * FROM users where id_user='$_GET[edit]'");
+include 'crud-rooms.php';
+$panggil = $conn->query("SELECT * FROM rooms where id='$_GET[edit]'");
 ?>
 <?php
 while ($row = $panggil->fetch_assoc()) {
     ?>
-                    <form action="crud-users.php" method="POST">
+                    <form action="crud-rooms.php" method="POST">
                         <div class="form-group">
-                            <label for="id_user">ID User</label>
+                            <label for="id">ID Kamar</label>
 
-                            <input type="text" class="form-control mb-3" name="id_user" value="<?=$row['id_user']?>" readonly>
+                            <input type="text" class="form-control mb-3" name="id" value="<?=$row['id']?>" readonly>
 
                         </div>
                         <div class="form-group">
-                            <label for="username">Username</label>
+                            <label for="no_kamar">No Kamar</label>
 
-                            <input type="text" class="form-control mb-3" name="username" value="<?=$row['username']?>">
+                            <input type="text" class="form-control mb-3" name="no_kamar" value="<?=$row['no_kamar']?>">
 
                         </div>
 
                         <div class="form-group">
 
-                            <label for="levels">Level</label>
+                            <label for="kelas">Kelas</label>
                             <div class="form-check">
 
-                                <input type="radio" class="form-check-input" name="levels" value="manager"
+                                <input type="radio" class="form-check-input" name="kelas" value="premium"
                                 <?php
-if (($row['levels']) === "manager") {echo "checked";}
-    ?>> Manager
+if (($row['kelas']) === "premium") {echo "checked";}
+    ?>> Premium
                             </div>
 
                             <div class="form-check">
 
-                                <input type="radio" class="form-check-input" name="levels" value="staff"
+                                <input type="radio" class="form-check-input" name="kelas" value="deluxe"
                                 <?php
-if (($row['levels']) === "staff") {echo "checked";}
-    ?>> Staff
+if (($row['kelas']) === "deluxe") {echo "checked";}
+    ?>> Deluxe
+                            </div>
+
+                            <div class="form-check">
+
+                                <input type="radio" class="form-check-input" name="kelas" value="standard"
+                                <?php
+if (($row['kelas']) === "standard") {echo "checked";}
+    ?>> Standard
+                            </div>
+
+                        </div>
+                        <div class="form-group">
+
+                            <label for="status">Status</label>
+                            <div class="form-check">
+
+                                <input type="radio" class="form-check-input" name="status" value="not_ready"
+                                <?php
+if (($row['status']) === "not_ready") {echo "checked";}
+    ?>> Out Of Service
+                            </div>
+
+                            <div class="form-check">
+
+                                <input type="radio" class="form-check-input" name="status" value="ready"
+                                <?php
+if (($row['status']) === "ready") {echo "checked";}
+    ?>> Ready
                             </div>
                             <div class="form-group mt-3">
-                                <input type="submit" name="edit-user" value="Edit" class="form-control btn btn-primary">
+                                <input type="submit" name="edit-room" value="Edit" class="form-control btn btn-primary">
                             </div>
                         </div>
                     </form>
