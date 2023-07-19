@@ -59,7 +59,7 @@ if (!isset($_SESSION{"login"})) {
             </div>
             <div class="col-10 d-flex flex-row justify-content-center">
                 <div class="form-section w-75 mt-5">
-                <h1>Edit User</h1>
+                <h1>Edit Kamar</h1>
                 <?php
 include 'koneksi.php';
 include 'crud-rooms.php';
