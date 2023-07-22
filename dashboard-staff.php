@@ -5,7 +5,6 @@ if (!isset($_SESSION{"login"})) {
     header("location:index.php");
     exit;
 }
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -36,9 +35,8 @@ if (!isset($_SESSION{"login"})) {
                 </div>
                 <div class="offcanvas-body">
                     <div class="sidebar-list d-flex flex-column mt-3 w-100">
-                        <a href="dashboard-user.php" class="sidebar-item pt-3 pb-3 w-100 text-center mb-2" data-aos="fade-right">User</a>
-                        <a href="dashboard-room.php" class="sidebar-item pt-3 pb-3 w-100 text-center mb-2" data-aos="fade-right" data-aos-delay="100">Room</a>
-                        <a href="index.php" class="logout-btn sidebar-item pt-3 pb-3 w-100 text-center mb-2"data-aos="fade-right" data-aos-delay="200">Log Out</a>
+                        <a href="dashboard-staff-reservation.php" class="sidebar-item pt-3 pb-3 w-100 text-center mb-2" data-aos="fade-right">Reservation</a>
+                        <a href="index.php" class="logout-btn sidebar-item pt-3 pb-3 w-100 text-center mb-2"data-aos="fade-right" data-aos-delay="100">Log Out</a>
                     </div>
                 </div>
             </div>
@@ -53,9 +51,8 @@ if (!isset($_SESSION{"login"})) {
                     </a>
                 </div>
                 <div class="sidebar-list d-flex flex-column mt-3 w-100">
-                    <a href="dashboard-user.php" class="user-btn sidebar-item pt-3 pb-3 w-100 text-center mb-2" data-aos="fade-right">User</a>
-                    <a href="dashboard-room.php" class="room-btn sidebar-item pt-3 pb-3 w-100 text-center mb-2" data-aos="fade-right" data-aos-delay="100">Room</a>
-                    <a href="logout.php" class="logout-btn sidebar-item pt-3 pb-3 w-100 text-center mb-2"data-aos="fade-right" data-aos-delay="200">Log Out</a>
+                    <a href="dashboard-staff-reservation.php" class="user-btn sidebar-item pt-3 pb-3 w-100 text-center mb-2" data-aos="fade-right">Reservation</a>
+                    <a href="logout.php" class="logout-btn sidebar-item pt-3 pb-3 w-100 text-center mb-2"data-aos="fade-right" data-aos-delay="100">Log Out</a>
                 </div>
             </div>
             <div class="col-xl-10 col-lg-9 col-md-12 d-flex flex-row justify-content-center">

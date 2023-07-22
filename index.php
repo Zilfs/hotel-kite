@@ -31,7 +31,7 @@ if (isset($_POST["login"])) {
                 $_SESSION["manager"] = false;
                 $_SESSION["login"] = true;
 
-                header("location:dashboard.php");
+                header("location:dashboard-staff.php");
                 exit;
             }
 
